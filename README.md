@@ -13,3 +13,7 @@ An interactive 3D WebGL and WebXR Virtual Pilgrimage to **Kedarnath Dham (श्
 ## Quick Start
 1. Run `start-server.bat` (or PowerShell `./server.ps1`)
 2. Open `http://localhost:8080/` in your browser.
+
+## Copyright & Credits
+- **Creator & Developer**: Harshit Verma
+- **Copyright**: © 2026 Harshit Verma. All Rights Reserved.
