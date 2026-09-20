@@ -1383,4 +1383,164 @@ html, body {
   letter-spacing: 0.5px;
 }
 
+/* ==========================================================================
+   Stereoscopic VR Dock & AR Portal Dock Styles
+   ========================================================================== */
+.vr-stereo-dock {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(245, 158, 11, 0.6);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.3);
+  padding: 8px 18px;
+  border-radius: 30px;
+  pointer-events: auto;
+  animation: fadeInDown 0.3s ease;
+  white-space: nowrap;
+}
+
+.vr-stereo-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.25);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+}
+
+.vr-stereo-info {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.vr-exit-btn {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  border: 1px solid #f87171;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vr-exit-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* AR Portal Dock */
+.ar-portal-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.92));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(245, 158, 11, 0.65);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(245, 158, 11, 0.35);
+  padding: 12px 20px;
+  border-radius: 24px;
+  max-width: 95vw;
+  pointer-events: auto;
+  animation: fadeInUp 0.3s ease;
+}
+
+.ar-dock-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ar-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fef08a;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.75), rgba(217, 119, 6, 0.85));
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(254, 215, 170, 0.5);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+}
+
+.ar-hint {
+  font-size: 12px;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.ar-dock-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ar-pill-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e2e8f0;
+  padding: 7px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ar-pill-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
+  color: #fef08a;
+}
+
+.ar-pill-btn.active {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  border-color: #f59e0b;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+.ar-pill-btn.exit {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #fca5a5;
+}
+
+.ar-pill-btn.exit:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate(-50%, 15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+
 

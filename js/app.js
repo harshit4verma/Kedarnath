@@ -54,7 +54,9 @@ class KedarnathApp {
     this.controls = new ControllerManager(this.camera, this.renderer, this.temple, this.environment);
 
     // 4. WebXR VR & Mobile Gyro AR Manager
-    this.xr = new XRManager(this.renderer, this.scene, this.camera, this.temple);
+    this.xr = new XRManager(this.renderer, this.scene, this.camera, this.temple, this.environment, this.controls);
+    this.xr.setApp(this);
+    this.controls.setXR(this.xr);
 
     // 5. Authentic 360° Real Photosphere VR Experience
     this.initReal360Viewer();
@@ -648,8 +650,17 @@ class KedarnathApp {
         this.environment.update(elapsedTime, delta);
       }
 
-      // Render frame
-      this.renderer.render(this.scene, this.camera);
+      // Update AR portal ring animation if active
+      if (this.xr) {
+        this.xr.update(delta, elapsedTime);
+      }
+
+      // Render frame (Stereoscopic 3D VR or Standard)
+      if (this.xr && this.xr.isStereoVR) {
+        this.xr.renderStereo(this.scene, this.camera);
+      } else {
+        this.renderer.render(this.scene, this.camera);
+      }
     });
   }
 }

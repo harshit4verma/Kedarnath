@@ -54,11 +54,16 @@ class ControllerManager {
     this.centerScreen = new THREE.Vector2(0, 0);
     this.hoveredBell = null;
     this.hoveredTempleFront = false;
+    this.xr = null;
 
     this.initKeyboard();
     this.initPointerLock();
     this.initMobileJoysticks();
     this.initTouchLook();
+  }
+
+  setXR(xr) {
+    this.xr = xr;
   }
 
   initKeyboard() {
@@ -446,7 +451,11 @@ class ControllerManager {
         this.euler.x = Math.max(-Math.PI / 2.1, Math.min(Math.PI / 2.1, this.euler.x));
       }
 
-      this.camera.quaternion.setFromEuler(this.euler);
+      if (this.xr && this.xr.isGyroActive) {
+        this.euler.setFromQuaternion(this.camera.quaternion);
+      } else {
+        this.camera.quaternion.setFromEuler(this.euler);
+      }
 
       const compassRose = document.getElementById('compass-rose');
       if (compassRose) {
@@ -511,7 +520,11 @@ class ControllerManager {
       this.euler.y -= this.joystickLook.x * delta * 2.2;
       this.euler.x -= this.joystickLook.y * delta * 1.8;
       this.euler.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.euler.x));
-      this.camera.quaternion.setFromEuler(this.euler);
+      if (!this.xr || !this.xr.isGyroActive) {
+        this.camera.quaternion.setFromEuler(this.euler);
+      }
+    } else if (this.xr && this.xr.isGyroActive) {
+      this.euler.setFromQuaternion(this.camera.quaternion);
     }
 
     this.direction.z = forwardInput;

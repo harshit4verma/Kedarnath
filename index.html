@@ -11,6 +11,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+  <!-- AR Background Camera Feed -->
+  <video id="ar-camera-video" playsinline autoplay muted style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; display: none; pointer-events: none;"></video>
+
   <!-- 3D Canvas Viewport -->
   <div id="canvas-container"></div>
 
@@ -273,6 +276,28 @@
       <div class="real-360-footer-copyright">
         © 2026 Harshit Verma • All Rights Reserved
       </div>
+    </div>
+  </div>
+
+  <!-- Floating Stereoscopic VR Exit Bar -->
+  <div id="vr-stereo-dock" class="vr-stereo-dock" style="display: none;">
+    <div class="vr-stereo-badge">🥽 STEREOSCOPIC 3D VR</div>
+    <div class="vr-stereo-info">Dual-Eye Cardboard / Side-by-Side 3D Active</div>
+    <button id="btn-exit-stereo-vr" class="vr-exit-btn">✕ Exit VR</button>
+  </div>
+
+  <!-- Floating AR Portal Control Dock -->
+  <div id="ar-portal-dock" class="ar-portal-dock" style="display: none;">
+    <div class="ar-dock-header">
+      <span class="ar-badge">✨ AR PORTAL LIVE</span>
+      <span class="ar-hint" id="ar-dock-hint">Kedarnath Dham in Your Real Space</span>
+    </div>
+    <div class="ar-dock-controls">
+      <button class="ar-pill-btn" id="btn-ar-scale-mini" data-scale="0.25" title="Tabletop Mini Scale (0.25x)">📱 Tabletop (0.25x)</button>
+      <button class="ar-pill-btn active" id="btn-ar-scale-normal" data-scale="1.0" title="Full Architecture Scale (1x)">🏛️ Real Scale (1x)</button>
+      <button class="ar-pill-btn" id="btn-ar-flip-camera" title="Switch between Front & Rear Camera">🔄 Flip Camera</button>
+      <button class="ar-pill-btn" id="btn-ar-bell" title="Ring Sacred Temple Bell in AR">🔔 Ring Bell</button>
+      <button class="ar-pill-btn exit" id="btn-exit-ar-dock" title="Exit AR Portal">✕ Exit AR</button>
     </div>
   </div>
 
